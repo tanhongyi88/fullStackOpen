@@ -1,0 +1,31 @@
+# fly.toml app configuration file generated for misty-dawn-1542 on 2023-04-22T15:45:20+08:00
+#
+# See https://fly.io/docs/reference/configuration/ for information about how to use this file.
+#
+
+app = "misty-dawn-1542"
+primary_region = "sin"
+
+[env]
+  PORT = "8080" # add this
+
+[experimental]
+  auto_rollback = true
+
+[[services]]
+  http_checks = []
+  internal_port = 8080 
+  processes = ["app"]
+  
+[http_service]
+  internal_port = 8080
+  force_https = true
+  auto_stop_machines = true
+  auto_start_machines = true
+
+[checks]
+  [checks.alive]
+    type = "tcp"
+    interval = "15s"
+    timeout = "2s"
+    grace_period = "5s"

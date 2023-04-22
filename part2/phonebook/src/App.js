@@ -15,6 +15,7 @@ const App = () => {
         setPersons(initialPersons);
       })
       .catch((error) => {
+        console.log(error)
         console.log("Fail to get all persons");
       });
   }, []);
